@@ -7,43 +7,53 @@
     <title>Document</title>
 </head>
 <body>
-    <canvas id="myCanvas" width="400" height="400">Your browser does not support the HTML canvas tag.</canvas>
-    <!--<div>
-        <input type="text" onkeypress="ColorDigit()" id="number">
-    </div>-->
-
+    <canvas id="myCanvas" width="500" height="500">Your browser does not support the HTML canvas tag.</canvas>
+    <input type="text" id="number" oninput="myFunction()">
     <script>
-        var canv = document.getElementById("myCanvas");
-        var ctx = canv.getContext("2d");
-
-        // function for printing 7 rectangles
-        function SevenRect() {
-            // print rect A
-            ctx.fillStyle = "rgb(210, 210, 210)";
-            ctx.fillRect(100, 20, 70, 10);
-            // print rect B
-            ctx.fillStyle = "rgb(210, 210, 210)";
-            ctx.fillRect(170, 30, 10, 70);
-            // print rect C
-            ctx.fillStyle = "rgb(210, 210, 210)";
-            ctx.fillRect(170, 110, 10, 70);
-            // print rect D
-            ctx.fillStyle = "rgb(210, 210, 210)";
-            ctx.fillRect(100, 180, 70, 10);
-            // print rect E
-            ctx.fillStyle = "rgb(210, 210, 210)";
-            ctx.fillRect(90, 110, 10, 70);
-            // print rect F
-            ctx.fillStyle = "rgb(210, 210, 210)";
-            ctx.fillRect(90, 30, 10, 70);
-            // print rect G
-            ctx.fillStyle = "rgb(210, 210, 210)";
-            ctx.fillRect(100, 100, 70, 10);
-            // print dot
-            ctx.fillStyle = "rgb(210, 210, 210)";
-            ctx.fillRect(190, 180, 10, 10);
-        }
         
+        let canv = document.getElementById("myCanvas");
+        let ctx = canv.getContext("2d");
+        
+        ctx.fillStyle = "rgb(210, 210, 210)";
+        // print rect A
+        let segA = ctx.fillRect(100, 20, 70, 10);
+        // print rect B
+        let segB = ctx.fillRect(170, 30, 10, 70);
+        // print rect C 
+        let segC = ctx.fillRect(170, 110, 10, 70);
+        // print rect D
+        let segD = ctx.fillRect(100, 180, 70, 10);
+        // print rect E
+        let segE = ctx.fillRect(90, 110, 10, 70);
+        // print rect F
+        let segF = ctx.fillRect(90, 30, 10, 70);
+        // print rect G
+        let segG = ctx.fillRect(100, 100, 70, 10);
+        // print dot
+        let segDot = ctx.fillRect(190, 180, 10, 10);
+        //array of digits built from segments
+        const digitsArray = [
+            [segA, segB, segC, segD, segE, segF],       // 0
+            [segB,segC],                                // 1
+            [segA, segB, segD, segE, segG],             // 2
+            [segA, segB, segC, segD, segG],             // 3
+            [segB, segC, segF, segG],                   // 4
+            [segA, segC, segD, segF, segG],             // 5
+            [segA, segC, segD, segE, segF, segG],       // 6
+            [segA, segB, segC],                         // 7
+            [segA, segB, segC, segD, segE, segF, segG], // 8
+            [segA, segB, segC, segD, segF, segG]        // 9     
+        ];
+        function myFunction() {
+            let digit = document.getElementById("number").value;
+            
+            digitsArray[digit].forEach(FillSegments);
+            alert(digitsArray[digit]);
+            function FillSegments() {
+                ctx.fillStyle = "rgb(255, 99, 71)"; 
+            }
+        }
+         
     </script>
     
 </body>
