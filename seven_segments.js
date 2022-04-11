@@ -30,9 +30,8 @@ function myFunction() {
     for (let j = 0; j < digitsArray[8].length; j++) {
         ColorSerments(8, j, "rgb(210, 210, 210)");
     } 
-    /* if the first digit is from 0 to 9 then segments are colored in red,
-    else Error. The program doesn't catch the case of inputting
-    the number with more then 1 digits, it will print the first digit */ 
+    /* if the digit is from 0 to 9 then the segments are colored in red,
+    else Error. */ 
     let digit = document.getElementById("number").value;
     if (digit >= 0 && digit <= 9) {
         // loop for coloring in red segments corresponding to the input number

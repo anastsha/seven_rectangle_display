@@ -1,1 +1,1 @@
-# It is first Nastias repo woho!!!
+# Seven-segment display (1 digit)
